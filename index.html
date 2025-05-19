@@ -9,9 +9,11 @@
     body {
       overflow: hidden;
       background: #0f172a;
+      position: relative;
     }
     .falling {
-      position: absolute;
+      position: fixed;
+      top: 0;
       font-size: 1.5rem;
       animation: fall linear infinite;
       color: #f472b6;
@@ -20,10 +22,10 @@
     }
     @keyframes fall {
       0% {
-        transform: translateY(-10%);
+        transform: translateY(0);
         opacity: 0;
       }
-      50% {
+      20% {
         opacity: 1;
       }
       100% {
