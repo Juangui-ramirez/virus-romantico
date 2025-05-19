@@ -10,12 +10,13 @@
       overflow: hidden;
       background: #0f172a;
     }
-    .heart {
+    .falling {
       position: absolute;
-      font-size: 2rem;
+      font-size: 1.5rem;
       animation: fall linear infinite;
       color: #f472b6;
       pointer-events: none;
+      white-space: nowrap;
     }
     @keyframes fall {
       0% {
@@ -39,23 +40,26 @@
   </div>
 
   <script>
-    const emojis = ["❤️", "💖", "💕", "💘", "💝", "💗"];
+    const corazones = ["❤️", "💖", "💕", "💘", "💝", "💗"];
+    const mensajes = ["Te amo", "TE AMO", "te AMO", "💘 Te amo 💘"];
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
-      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+    function crearElementoCayendo(texto, claseExtra = '') {
+      const el = document.createElement("div");
+      el.className = `falling ${claseExtra}`;
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = (2 + Math.random() * 3) + "s";
+      el.innerText = texto;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 6000);
     }
 
-    setInterval(createHeart, 150);
+    setInterval(() => {
+      crearElementoCayendo(corazones[Math.floor(Math.random() * corazones.length)]);
+    }, 150);
+
+    setInterval(() => {
+      crearElementoCayendo(mensajes[Math.floor(Math.random() * mensajes.length)], 'text-green-400 text-sm');
+    }, 200);
   </script>
 </body>
 </html>
