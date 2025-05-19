@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackeada por Amor ❤️</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      overflow: hidden;
+      background: #0f172a;
+    }
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall linear infinite;
+      color: #f472b6;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+  <div class="text-center z-10 relative">
+    <h1 class="text-4xl sm:text-6xl font-bold text-pink-400 animate-pulse">¡Has sido hackeada por amor! ❤️</h1>
+    <p class="text-white mt-4 text-lg">Tu sistema ha sido invadido por besos y abrazos 💋</p>
+  </div>
+
+  <script>
+    const emojis = ["❤️", "💖", "💕", "💘", "💝", "💗"];
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 150);
+  </script>
+</body>
+</html>
